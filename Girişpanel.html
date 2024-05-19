@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HD MovieX - Login Page</title>
+    <style>
+        .site-links {
+            position: absolute;
+            top: 8%;
+            left: 20px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .site-links a {
+            color: #fafafa;
+            text-decoration: none;
+            margin-left: 20px;
+            padding: 10px 20px;
+            border: 2px solid #266fff;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        
+        .site-links a:hover {
+            background-color: #266fff;
+            color: #000;
+        }
+        body {
+            font-family: sans-serif;
+            background-color: #14141a;
+            color: #fafafa;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #0c0c0f;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 30px;
+            color: #fafafa;
+            text-shadow: none;
+            padding: 20px;
+            display: inline-block;
+            border: 2px solid #266fff;
+            letter-spacing: 2px;
+            font-family: "Arial Black", sans-serif; 
+        }
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #1d1d24;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            border: 1px solid #262933;
+        }
+        h2 {
+            color: #fafafa;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            color: #fff;
+            font-weight: bold;
+        }
+        input[type="email"], input[type="password"] {
+            width: calc(100% - 12px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #262933;
+            border-radius: 3px;
+            background-color: #14141a;
+            color: #fafafa;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #14141a;
+            border-radius: 3px;
+            background-color: #266fff;
+            color: #fafafa;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.123)
+        }
+        input[type="submit"]:hover {
+            background-color: #1b41b2;
+        }
+        .signup-link {
+            text-align: center;
+            color: #fafafa;
+            margin-top: 20px;
+        }
+        .signup-link a {
+            color: #266fff;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+        .signup-link a:hover {
+            color: #266fff;
+        }
+        
+        @media only screen and (max-width: 600px) {
+            .site-links {
+                position: static;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                transform: none;
+                margin-top: 10px;
+                left: auto;
+                top: auto;
+                width: 100%;
+                z-index: 0; /* Yeni eklenen stil */
+            }
+            .site-links a {
+                font-size: 12px;
+                padding: 8px 15px;
+                margin: 5px 0;
+            }
+            .header h1 {
+                font-size: 24px;
+                padding: 10px;
+            }
+            .container {
+                margin: 20px auto;
+                padding: 10px;
+            }
+            h2 {
+                font-size: 20px;
+                margin-bottom: 15px;
+            }
+            input[type="email"],
+            input[type="password"] {
+                width: 100%;
+            }
+            input[type="submit"] {
+                width: 100%;
+            }
+            .signup-link {
+                margin-top: 15px;
+            }
+            /* Anasayfa linkini HD MovieX başlığının hemen altına taşıma */
+            .site-links {
+                position: relative;
+                top: 0;
+                transform: translateY(0);
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Hd MovieX</h1>
+        <div class="site-links">
+            <a href="anasayfa.html">Ana Sayfa</a>
+        </div>
+    </div>
+    <div class="container">
+        <h2>Kullanıcı Giriş Formu</h2>
+        <form action="giris.php" method="post">
+            <label for="email">E-posta Adresiniz:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="sifre">Şifreniz:</label>
+            <input type="password" id="sifre" name="sifre" required>
+            <input type="submit" value="Giriş Yap">
+        </form>
+        <div class="signup-link">
+            Hesabınız yok mu? <a href="kayıtpanel.html">Şimdi kayıt olun</a>
+        </div>
+    </div>
+</body>
+
+
+
+
