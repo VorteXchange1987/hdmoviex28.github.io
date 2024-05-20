@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HD MovieX - Knives Out</title>
+    <style>
+        body {
+            font-family: "Arial", sans-serif;
+            background-color: #14141a;
+            color: #FAFAFA;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        header {
+            background-color: #0C0C0F;
+            padding: 20px;
+            text-align: center;
+            box-shadow: none;
+            position: relative;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 30px;
+            color: #FAFAFA;
+            text-shadow: none;
+            padding: 20px;
+            display: inline-block;
+            border: 2px solid #266FFF;
+            letter-spacing: 2px;
+            font-family: "Arial Black", sans-serif;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 20px;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+            text-shadow: 1px 1px 2px rgba(253, 216, 53, 0.5);
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #fdd835;
+        }
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .title .title-border {
+            font-family: Poppins, arial, serif !important;
+            display: inline-block;
+            color: #fff;
+            padding-bottom: 12px;
+            padding-right: 5px;
+            border-bottom: 2px solid #ffd70d;
+            margin: 0 0 -2px;
+            font-weight: 400;
+            font-size: 16px;
+        }
+        .bd-purple {
+            border-color: red !important;
+        }
+        .sidebar {
+            width: 200px;
+            background-color: #1d1d24;
+            padding: 20px;
+            border-radius: 10px;
+            border-bottom: 1px solid #262933;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            margin-right: 20px;
+            margin-bottom: 10px;
+            border: 1px solid #262933;
+        }
+        .sidebar h2 {
+            color: #FAFAFA;
+            margin-bottom: 20px;
+            font-size: 24px;
+            text-shadow: none;
+            text-align: center;
+        }
+        .category {
+            text-align: center;
+        }
+        .category a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 0;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            border-bottom: 1px solid #444;
+        }
+        .category a:last-child {
+            border-bottom: none;
+        }
+        .category a:hover {
+            background-color: #282831;
+        }
+        .content {
+            flex: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #1d1d24;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            border: 1px solid #262933;
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            border: 1px solid #262933;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 1px solid #262933;
+            border-radius: 10px;
+        }
+        .rating {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .rating button {
+            background-color: #266FFF;
+            color: #FAFAFA;
+            border: 1px solid #14141a;
+            padding: 10px 20px;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 0 10px;
+            font-family: Arial, Helvetica, sans-serif;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.123);
+        }
+        .rating button:hover {
+            background-color: #1B41B2;
+        }
+        .rating span {
+            font-size: 14px;
+            color: #fafafa;
+        }
+        footer {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        footer p {
+            margin: 0;
+            font-size: 14px;
+            color: #fff;
+            text-shadow: none;
+        }
+        .movie {
+            background-color: #14141a;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            margin-bottom: 0px;
+            border: 1px solid #262933;
+            font-size: 13px;
+            font-family: Arial,sans-serif;
+            margin-top: 5px;
+        }
+        .movie-rating {
+            background-color: #14141a;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            margin-top: 5px;
+            border: 1px solid #262933;
+            font-size: 13px;
+            font-family: Arial,sans-serif;
+        }
+        .movie-img {
+            background-color: #14141a;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            margin-top: 5px;
+            border: 1px solid #262933;
+            font-size: 13px;
+            font-family: Arial,sans-serif;
+            height: 240px;
+            width: 157px;
+
+            
+
+        }
+        .movie-img-a {
+            margin-left: -10px;
+            border-radius: 5px;
+            margin-top: -5px;
+            height: 250px;
+            width: 177px;
+        }
+        .ad {
+            background-color: #14141a;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            margin-bottom: 20px;
+            border: 1px solid #262933;
+        }
+        .ad-sidebar {
+            width: 200px;
+            background-color: #1d1d24;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            margin-right: 20px;
+            margin-bottom: 10px;
+            border: 1px solid #262933;
+        }
+        .comment-box {
+            background-color: #14141a;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            margin-bottom: 20px;
+            border: 1px #262933;
+        }
+        .comment-box textarea {
+            width: calc(100% - 40px);
+            height: 100px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #262933;
+            border-radius: 5px;
+            resize: none;
+            color: #fff;
+            background-color: #1d1d24;
+        }
+        .comment-box button {
+            background-color: #266FFF;
+            color: #FAFAFA;
+            border: 1px solid #14141a;
+            padding: 10px 20px;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-family: Arial, Helvetica, sans-serif;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        .comment-box button:hover {
+            background-color: #1B41B2;
+        }
+        .user-actions {
+            position: absolute;
+            top: 19%;
+            right: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .user-actions a {
+            color: #FAFAFA;
+            text-decoration: none;
+            margin-left: 20px;
+            padding: 10px 20px;
+            border: 2px solid #266FFF;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .user-actions a:hover {
+            background-color: #266FFF;
+            color: #000;
+        }
+        .site-links {
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .site-links a {
+            color: #FAFAFA;
+            text-decoration: none;
+            margin-left: 20px;
+            padding: 10px 20px;
+            border: 2px solid #266FFF;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .site-links a:hover {
+            background-color: #266FFF;
+            color: #000;
+        }
+        @media only screen and (max-width: 600px) {
+            header {
+                padding: 10px;
+                text-align: center;
+            }
+            header h1 {
+                font-size: 24px;
+                padding: 10px;
+            }
+            nav ul {
+                display: none;
+            }
+            .site-links {
+                position: static;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0px;
+                transform: none;
+                margin-top: 10px;
+            }
+            .site-links a {
+                font-size: 12px;
+                padding: 8px 15px;
+                margin: 5px 0;
+            }
+            .user-actions {
+                position: static;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0px;
+                margin-top: 10px;
+            }
+            .user-actions a {
+                font-size: 12px;
+                padding: 8px 15px;
+                margin: 5px 0;
+            }
+            main {
+                flex-direction: column;
+                padding: 10px;
+            }
+            .sidebar {
+                width: 82%;
+                margin-right: 0;
+                margin-bottom: 10px;
+                margin-left: 15px;
+            }
+            .content {
+                width: 82%;
+                max-width: none;
+                margin-bottom: 10px;
+                margin-left: 15px;
+            }
+            .ad-sidebar {
+                width: 82%;
+                margin-right: 0;
+                margin-bottom: 10px;
+                margin-left: 15px;
+            }
+            .comment-box textarea {
+                width: calc(100% - 20px);
+            }
+            .movie-img {
+                margin-left: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>HD MovieX</h1>
+        <div class="site-links">
+            <a href="index.html">Ana Sayfa</a>
+            <a href="Hakkında.html">Hakkında</a>
+        </div>
+        <div class="user-actions">
+            <a href="Girişpanel.html">Giriş Yap</a>
+            <a href="kayıtpanel.html">Kayıt Ol</a>
+        </div>
+    </header>
+    <main>
+        <div class="sidebar">
+            <div class="category">
+                <h2>Kategoriler</h2>
+                <a href="#">Aksiyon</a>
+                <a href="#">Macera</a>
+                <a href="#">Komedi</a>
+                <a href="#">Drama</a>
+                <a href="#">Bilim Kurgu</a>
+                <a href="#">Korku</a>
+                <a href="#">Romantik</a>
+                <a href="#">Belgesel</a>
+            </div>
+        </div>
+        <div class="content">
+            <div class="ad ad-content">
+                <p>Reklam Alanı</p>
+            </div>
+            <div class="video-container">
+                <iframe allow="fullscreen" allowfullscreen height="100%" src=" https://archive.org/embed/bicaklar-cekildi-knives-out-turkce-dublaj-1080p-full-hd-iz " width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe>
+            </div>
+            <div class="rating">
+                <button>Beğen</button>
+                <button>Beğenme</button>
+                <span>Görüntülenme: 1000</span>
+            </div>
+            <div class="comment-box">
+                <textarea placeholder="Yorumunuzu buraya yazın..."></textarea>
+                <button>Gönder</button>
+            </div>
+        </div>
+        <div class="ad-sidebar">
+            <div class="ad">
+                <span class="title-border bd-purple">
+                    <i class="fas fa-info-circle">
+
+                    </i> Film Bilgileri</span>
+            </div>
+            <div class="movie-img">
+                <span class="title-border bd-purple">
+                      <img class="movie-img-a" src="https://www.filmizlesene.pro/wp-content/uploads/2020/02/tt8946378.jpg " alt="Film Afişi">
+        
+                </span>
+            </div>
+            <div class="movie">
+                <span class="title-border bd-purple"><i class="fas fa-info-circle"></i>
+                    Film Özeti: Polisiye roman yazarı Harlan Thrombey (Christopher Plummer), 85. yaş gününde evinde ölü bulunur. Meraklı bir araştırmacı dedektif olan Benoit Blanc (Daniel Craig)
+                     gizli bir şekilde cinayet araştırmasında yer almaya başlar. Harlan Thrombey'nin ailesine soruşturma için başvurulur, ancak aile tam anlamıyla 
+                    hiçbir işine yaramaz. Blanc tüm bu yüzeyde görünenlerin altını kazımak ve tüm yalanları ortaya çıkararak Thrombey'nin ölümünün ardındaki gerçeği bulmayı hedefler.
+                </span>
+            </div>
+            <div class="movie-rating">
+                <span class="title-border bd-purple"><i class="fas fa-info-circle"></i>IMDB: 8.0</span>
+            </div>
+
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 HD MovieX. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
